@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bitaneeeemmmminyom 🧡</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:Georgia,"Times New Roman",serif;
+  background:#120b08;color:#fff7f0;overflow-x:hidden;
+}
+body:before{
+  content:"";position:fixed;inset:0;pointer-events:none;opacity:.11;
+  background-image:radial-gradient(#fff 1px,transparent 1px);
+  background-size:28px 28px;z-index:0;
+}
+.page{min-height:100vh;position:relative;z-index:1;display:none}
+.page.active{display:flex}
+.hero{
+  align-items:center;justify-content:center;text-align:center;padding:30px;
+  background:radial-gradient(circle at 50% 45%,#8f3d13 0%,#3d180d 38%,#120b08 75%);
+}
+.glow{
+  position:absolute;width:380px;height:380px;border-radius:50%;
+  background:#ff7a18;filter:blur(100px);opacity:.22;animation:pulse 4s infinite;
+}
+@keyframes pulse{50%{transform:scale(1.18);opacity:.32}}
+.hero-content{max-width:760px;position:relative}
+.eyebrow{letter-spacing:5px;text-transform:uppercase;color:#ffad68;font-size:12px;margin-bottom:24px}
+h1{font-size:clamp(48px,11vw,100px);line-height:.95;color:#fff3e8;text-shadow:0 0 35px #ff6a183d}
+.hero p{margin:25px auto 35px;font-size:19px;line-height:1.7;color:#f6d8c1;max-width:600px}
+.btn{
+  border:1px solid #ff9147;background:#ff6b1a;color:white;border-radius:999px;
+  padding:15px 27px;font-size:16px;cursor:pointer;transition:.25s;
+  box-shadow:0 8px 30px #ff5b1533;font-family:inherit;
+}
+.btn:hover{transform:translateY(-3px);background:#ff7c31;box-shadow:0 12px 35px #ff5b1555}
+.scroll{margin-top:55px;color:#d79d78;font-size:12px;letter-spacing:2px}
+
+.content-page{
+  align-items:center;justify-content:center;padding:30px;
+  background:radial-gradient(circle at 50% 30%,#57200e 0%,#1d0d08 48%,#120b08 100%);
+}
+.container{width:min(900px,100%);padding:55px 20px}
+.section-title{text-align:center;font-size:clamp(30px,6vw,45px);margin-bottom:15px;color:#ffd2ae}
+.section-sub{text-align:center;color:#cda993;margin-bottom:35px;line-height:1.7}
+.divider{width:80px;height:2px;background:#e96824;margin:0 auto 35px;border-radius:2px}
+
+.memory-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+.card{
+  background:linear-gradient(145deg,#27130d,#1a0e0a);
+  border:1px solid #71351d;border-radius:24px;padding:25px;
+  min-height:220px;transition:.3s;position:relative;overflow:hidden;
+}
+.card:hover{transform:translateY(-6px);border-color:#d76527}
+.icon{font-size:34px;margin-bottom:15px}
+.card h3{color:#ffad68;font-size:22px;margin-bottom:10px}
+.card p{color:#d8b9a6;line-height:1.8;font-size:15px}
+
+.game-wrap{max-width:700px;margin:auto;text-align:center}
+.game{
+  background:linear-gradient(145deg,#30150b,#170b08);
+  border:1px solid #8c401d;border-radius:28px;padding:30px 25px;
+  box-shadow:0 20px 60px #0005;
+}
+.progress{color:#b98970;font-size:13px;letter-spacing:2px;margin-bottom:18px}
+.question{font-size:25px;line-height:1.5;margin-bottom:22px;color:#ffe5d1}
+.options{display:grid;gap:12px}
+.option{
+  background:#24110b;border:1px solid #633019;color:#f6d8c1;
+  padding:15px;border-radius:15px;cursor:pointer;font-family:inherit;font-size:16px;transition:.2s
+}
+.option:hover{border-color:#ff7b31;background:#35170c;transform:translateY(-2px)}
+.option.correct{border-color:#ffad68;background:#71300f}
+.option.wrong{border-color:#a43b3b;background:#401515}
+.feedback{min-height:60px;margin-top:18px;color:#ffab6b;font-size:18px;line-height:1.5}
+.emoji{font-size:38px;display:block;margin-bottom:5px}
+.answer-word{
+  display:flex;justify-content:center;gap:9px;margin:20px 0 30px;
+}
+.letter{
+  width:42px;height:48px;border-radius:12px;border:1px solid #6d331a;
+  background:#1e0d08;display:flex;align-items:center;justify-content:center;
+  color:#ffad68;font-size:23px;transition:.4s;
+}
+.letter.filled{background:#6f2d0d;border-color:#ff8a42;color:#fff;box-shadow:0 0 18px #ff6b1844}
+
+.final{text-align:center}
+.final-heart{font-size:70px;animation:heartBeat 1.2s infinite}
+@keyframes heartBeat{50%{transform:scale(1.15)}}
+.love-line{font-size:clamp(34px,8vw,65px);color:#ff9a52;margin:25px 0;line-height:1.15}
+.secret{
+  max-width:650px;margin:25px auto;color:#e8c8b5;line-height:2;font-size:18px;
+  background:#1d0d09;border:1px solid #633019;padding:28px;border-radius:22px;
+}
+.small{color:#a77a64;font-size:13px;margin-top:20px}
+
+.heart{
+  position:fixed;bottom:-30px;font-size:18px;pointer-events:none;z-index:10;
+  animation:float 4s linear forwards
+}
+@keyframes float{to{transform:translateY(-110vh) rotate(360deg);opacity:0}}
+
+@media(max-width:600px){
+ .container{padding:30px 10px}.game{padding:25px 16px}
+ .question{font-size:21px}.card{min-height:auto}
+}
+</style>
+</head>
+<body>
+
+<!-- SAYFA 1 -->
+<section id="home" class="page active hero">
+  <div class="glow"></div>
+  <div class="hero-content">
+    <div class="eyebrow">sadece sana ait küçük bir yer</div>
+    <h1>Bitaneeeemmmminyom ❤️</h1>
+    <p>
+      Seni kırdığımın farkındayım yavrummmm, sen benim en değerlimsin ve öyle kalacaksın.
+      <strong>BİTANEEMMMİNYOOOMM ben seni çok çok seviyorummm kiii 🧡</strong>
+    </p>
+    <button class="btn" onclick="goTo('memories')">Hadi başlayalım →</button>
+    <div class="scroll">küçük bir yolculuk ↓</div>
+  </div>
+</section>
+
+<!-- SAYFA 2 -->
+<section id="memories" class="page content-page">
+  <div class="container">
+    <h2 class="section-title">Bizden birkaç parça</h2>
+    <div class="divider"></div>
+    <p class="section-sub">Bazı anılar küçücük bir yerde yaşanır ama insanın içinde kocaman yer kaplar.</p>
+
+    <div class="memory-grid">
+      <article class="card">
+        <div class="icon">🚌</div>
+        <h3>O meşhur otobüs</h3>
+        <p>
+          Otobüsü kaçırıp Kayseri'den Niğde'ye kadar gitmemiz...
+          Normal şartlarda stres olması gereken bir şeyin, dönüp baktığımda
+          güzel bir anıya dönüşmesi biraz da seninle ilgili.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="icon">🕌</div>
+        <h3>Bursa günü</h3>
+        <p>
+          Bursa'yı beraber gezdiğimiz gün. Ulu Camii, Trilye, süt helvası...
+          Bir şehri güzel yapan şeyin sadece gezilecek yerler olmadığını
+          o gün bir kez daha anladım.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="icon">🐰</div>
+        <h3>Tavşanımmm</h3>
+        <p>
+          Sana böyle hitap etmemin bile bende ayrı bir yeri var.
+          Çünkü bazı kelimeler sözlükte sadece kelimedir;
+          bazılarıysa bir insanı düşününce anlam kazanır.
+        </p>
+      </article>
+    </div>
+
+    <div style="text-align:center;margin-top:35px">
+      <button class="btn" onclick="goTo('gameIntro')">Bir sonraki sayfaya geç →</button>
+    </div>
+  </div>
+</section>
+
+<!-- SAYFA 3 OYUN GİRİŞİ -->
+<section id="gameIntro" class="page content-page">
+  <div class="container game-wrap">
+    <div class="eyebrow">şimdi sıra sende 🧡</div>
+    <h2 class="section-title">Küçük bir oyuna hazır mısın<br>ceylangözlümmm?</h2>
+    <div class="divider"></div>
+    <p class="section-sub">
+      Bazı kelimeleri ben tamamlayamıyorum.<br>
+      Bakalım onları sen tamamlayabilecek misin? 😌
+    </p>
+    <button class="btn" onclick="startGame()">Oyuna başla ❤️</button>
+  </div>
+</section>
+
+<!-- SAYFA 4 OYUN -->
+<section id="game" class="page content-page">
+  <div class="container game-wrap">
+    <div class="eyebrow">boşluk doldurma zamanı</div>
+    <div class="game">
+      <div id="progress" class="progress">1 / 5</div>
+      <div class="answer-word" id="answerWord">
+        <div class="letter"></div><div class="letter"></div><div class="letter"></div>
+        <div class="letter"></div><div class="letter"></div>
+      </div>
+      <div id="question" class="question"></div>
+      <div id="options" class="options"></div>
+      <div id="feedback" class="feedback"></div>
+    </div>
+  </div>
+</section>
+
+<!-- SAYFA 5 SONUÇ -->
+<section id="final" class="page content-page">
+  <div class="container final">
+    <div class="final-heart">🧡</div>
+    <div class="eyebrow">kelimeler tamamlandı</div>
+    <h2 class="section-title">Ve ortaya çıkan kelime...</h2>
+    <div class="love-line" id="finalWord">AŞKIM</div>
+    <div class="secret">
+      <strong>Ben sana aşığım bitaneeemmminyom.</strong><br><br>
+      Uzakta olsam da, seni düşünmediğim tek bir an bile yok gibi.
+      Bazen sana bir çiçek gönderemiyorum, yanında olamıyorum,
+      istediğim şeyi yapamıyorum...
+      <br><br>
+      Ama senin için küçük de olsa bir şey hazırlamak istedim.
+      Çünkü sen benim için küçücük bir şey değilsin. ❤️
+      <br><br>
+      <strong>Tavşanımmm, iyi ki varsın.</strong>
+    </div>
+    <button class="btn" onclick="heartRain()">Bir kez daha söyle 🧡</button>
+    <div class="small">Bu sayfa sadece senin için yapıldı.</div>
+  </div>
+</section>
+
+<script>
+const questions = [
+  {
+    text:"......... saçlım",
+    options:[
+      {label:"a) sırma",value:"A"},
+      {label:"b) esmer",value:"B"},
+      {label:"c) güzel",value:"C"}
+    ],
+    correct:0,
+    letter:"A"
+  },
+  {
+    text:".......... gözlüm",
+    options:[
+      {label:"ş) ceylan",value:"Ş"},
+      {label:"b) sıpa",value:"B"},
+      {label:"c) iyi",value:"C"}
+    ],
+    correct:0,
+    letter:"Ş"
+  },
+  {
+    text:"....... ...... ellim",
+    options:[
+      {label:"a) biricik",value:"B"},
+      {label:"b) omonin",value:"B2"},
+      {label:"k) yumuş yumuş",value:"K"}
+    ],
+    correct:2,
+    letter:"K"
+  },
+  {
+    text:"........... ... sevgilim",
+    options:[
+      {label:"ı) benim biricik",value:"I"},
+      {label:"b) tavşan",value:"B"},
+      {label:"c) bebeğişko",value:"C"}
+    ],
+    correct:0,
+    letter:"I"
+  },
+  {
+    text:".... ..... deycem",
+    options:[
+      {label:"a) pisi pisi",value:"A"},
+      {label:"b) miyav",value:"B"},
+      {label:"m) hemen",value:"M"}
+    ],
+    correct:2,
+    letter:"M"
+  }
+];
+
+let current=0;
+let letters=["","","","",""];
+let locked=false;
+
+function goTo(id){
+  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function startGame(){
+  current=0;
+  letters=["","","","",""];
+  locked=false;
+  updateLetters();
+  goTo("game");
+  renderQuestion();
+}
+
+function updateLetters(){
+  document.querySelectorAll(".letter").forEach((el,i)=>{
+    el.textContent=letters[i]||"";
+    el.classList.toggle("filled",!!letters[i]);
+  });
+}
+
+function renderQuestion(){
+  const q=questions[current];
+  document.getElementById("progress").textContent=(current+1)+" / "+questions.length;
+  document.getElementById("question").textContent=q.text;
+  document.getElementById("feedback").innerHTML="";
+  document.getElementById("options").innerHTML=q.options.map((o,i)=>
+    `<button class="option" onclick="answer(${i})">${o.label}</button>`
+  ).join("");
+  locked=false;
+}
+
+function answer(index){
+  if(locked)return;
+  locked=true;
+  const q=questions[current];
+  const buttons=document.querySelectorAll(".option");
+  const feedback=document.getElementById("feedback");
+
+  if(index===q.correct){
+    buttons[index].classList.add("correct");
+    letters[current]=q.letter;
+    updateLetters();
+    feedback.innerHTML='<span class="emoji">😘</span>Doğruuu! İşte böyle, ceylangözlümmm.';
+
+    setTimeout(()=>{
+      current++;
+      if(current<questions.length){
+        renderQuestion();
+      }else{
+        setTimeout(()=>goTo("final"),500);
+      }
+    },1200);
+  }else{
+    buttons[index].classList.add("wrong");
+    feedback.innerHTML='<span class="emoji">💋</span>Yanlış ama olsun... Bir öpücük hakkın var. Bir daha dene. 😌';
+    setTimeout(()=>locked=false,700);
+  }
+}
+
+function heartRain(){
+  for(let i=0;i<35;i++){
+    setTimeout(()=>{
+      const h=document.createElement("div");
+      h.className="heart";
+      h.textContent=["🧡","❤️","😘","✨","🐰"][Math.floor(Math.random()*5)];
+      h.style.left=Math.random()*100+"vw";
+      h.style.animationDuration=(3+Math.random()*3)+"s";
+      document.body.appendChild(h);
+      setTimeout(()=>h.remove(),6500);
+    },i*70);
+  }
+}
+</script>
+</body>
+</html>
